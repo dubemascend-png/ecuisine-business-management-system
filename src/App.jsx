@@ -25,7 +25,7 @@ function Auth() {
     e.preventDefault();setBusy(true);setError('');setMessage('');
     try{
       if(mode==='signup'){
-        const {data,error}=await supabase.auth.signUp({email:email.trim(),password,options:{data:{full_name:name.trim()}}});
+        const {data,error}=await supabase.auth.signUp({email:email.trim(),password,options:{data:{full_name:name.trim()},emailRedirectTo:'https://dubemascend-png.github.io/ecuisine-business-management-system/email-confirmed.html'}});
         if(error)throw error;
         setMessage(data.session?'Account created. Loading your workspace…':'Account created. Check your email to confirm, then sign in.');
       }else if(mode==='reset'){
